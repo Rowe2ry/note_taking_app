@@ -7,5 +7,15 @@
         "title": "Post Test One",
         "text": "See if I end up in the database please.",
         "id": "ySeFH5cs1OOD2zXHDcnFP"
+    },
+    {
+        "title": "Hello Everyone",
+        "text": "Do you like this note applicaiton?",
+        "id": "mxTVzah4lyQf0TPx0x8yp"
+    },
+    {
+        "title": "Populate Note List",
+        "text": "A new note should appear in the list.",
+        "id": "KNaO7dPIjGUJgVtVW5Uam"
     }
 ]

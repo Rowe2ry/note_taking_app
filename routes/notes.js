@@ -45,4 +45,23 @@ notes.post('/', (req,res) => {
 
 });
 
+notes.delete('/:id', (req, res) => {
+    console.info(`${req.method} request for removing a note received at /api/notes/${req.params.id}`);
+
+    const thisNote = req.params.id;
+    fs.readFile('./db/db.json', 'utf8', (err, data) => { // open the current JSON faux database
+        if (err) {
+            console.error(err); // if we get an error display it
+          } else {
+            const parsedData = JSON.parse(data); // turn our current JSON into an object
+            parsedData.splice(parsedData.findIndex(function(i){
+                return i.id === thisNote;
+            }), 1);
+            fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
+            err ? console.error(err) : console.info(`\nData deleted!`)
+            );
+          };
+    });
+});
+
 module.exports = notes;
