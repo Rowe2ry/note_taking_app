@@ -24,7 +24,7 @@ notes.post('/', (req,res) => {
         };
     };
 
-    fs.readFile(jsonDb, (err, data) => {
+    fs.readFile('./db/db.json', (err, data) => {
         if (err) {
             console.error(err);
           } else {
