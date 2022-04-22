@@ -14,8 +14,13 @@
         "id": "mxTVzah4lyQf0TPx0x8yp"
     },
     {
-        "title": "Populate Note List",
-        "text": "A new note should appear in the list.",
-        "id": "KNaO7dPIjGUJgVtVW5Uam"
+        "title": "I am a different note",
+        "text": "Notes do be pretty cool",
+        "id": "mo1TnGPZXuei9PxmxmfeT"
+    },
+    {
+        "title": "nodemon test",
+        "text": "please update immediately",
+        "id": "96DlSnZv9sjHLd1Bd2_eJ"
     }
 ]
