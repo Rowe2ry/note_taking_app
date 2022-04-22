@@ -6,11 +6,19 @@ const fs = require('fs'); // file system
 const notes = require('express').Router();  // use 'notes' as a router
 const jsonDb = require('../db/db.json');  // this is the file we want to work with
 const { nanoid } = require('nanoid'); // random id generator
+// const util = require('util'); // LATEST CHANGE
 
 notes.get('/', (req,res) => {
     console.info(`${req.method} request for db.json received at /api/notes`);
     res.json(jsonDb);
 });
+
+/*notes.get('/', (req,res) => {
+    util.promisify(fs.readFile('../db/db.json', 'utf8', () => {
+        console.info(`${req.method} request for db.json received at /api/notes`);
+    }).then((data) => res.json(JSON.parse(data))));
+    // res.json(jsonDb);
+}); */
 
 notes.post('/', (req,res) => {
     console.info(`${req.method} request for adding a new note received at /api/notes`);
