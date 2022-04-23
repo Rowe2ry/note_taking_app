@@ -4,13 +4,20 @@
 
 const fs = require('fs'); // file system
 const notes = require('express').Router();  // use 'notes' as a router
-const jsonDb = require('../db/db.json');  // this is the file we want to work with
+// const jsonDb = require('../db/db.json');  // this is the file we want to work with
 const { nanoid } = require('nanoid'); // random id generator
 // const util = require('util'); // LATEST CHANGE
 
 notes.get('/', (req,res) => {
     console.info(`${req.method} request for db.json received at /api/notes`);
-    res.json(jsonDb);
+    fs.readFile('./db/db.json', 'utf8', (err, data) => {
+        if (err) {
+            console.error(err); // if we get an error display it
+        } else {
+            res.send(JSON.parse(data));
+            //console.info(data);
+        };    
+    });
 });
 
 /*notes.get('/', (req,res) => {
@@ -65,9 +72,9 @@ notes.delete('/:id', (req, res) => {
             parsedData.splice(parsedData.findIndex(function(i){
                 return i.id === thisNote;
             }), 1);
-            fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) =>
-            err ? console.error(err) : console.info(`\nData deleted!`)
-            );
+            fs.writeFile('./db/db.json', JSON.stringify(parsedData, null, 4), (err) => {
+            err ? console.error(err) : console.info(`\nData deleted!`);
+        });
           };
     });
 });
